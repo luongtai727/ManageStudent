@@ -15,10 +15,19 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_sort_by_alcohol"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <EditText
+        android:id="@+id/edt_nsx"
+        android:layout_width="0dp"
+        android:hint="Nhà sản xuất"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/rcv_wine_report"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sort_by_alcohol"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/btn_sort_by_alcohol"
-        android:text="Sắp xếp theo nồng độ"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="Tìm kiếm"
+        app:layout_constraintTop_toBottomOf="@+id/spn_producer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent" />

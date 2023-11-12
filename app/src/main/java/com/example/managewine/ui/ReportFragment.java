@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.managewine.MyApp;
@@ -36,6 +37,8 @@ public class ReportFragment extends Fragment {
 
     private WineAdapter wineAdapter;
 
+    private EditText edtNSX;
+
     private Button btnSortByAlco;
     AppDatabase database = MyApp.getDatabase();
     ManufacturerDao manufacturerDao = database.manufacturerDao();
@@ -56,7 +59,7 @@ public class ReportFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         btnSortByAlco = view.findViewById(R.id.btn_sort_by_alcohol);
-
+        edtNSX = view.findViewById(R.id.edt_nsx);
         spinner = view.findViewById(R.id.spn_producer);
 
         ArrayAdapter<Manufacturer> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, manufacturerDao.getAllManufacturers());
@@ -82,7 +85,13 @@ public class ReportFragment extends Fragment {
         btnSortByAlco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<Manufacturer> manufacturers =  manufacturerDao.getAllManufacturers().stream().filter(it-> it.getName().toUpperCase().equals("PHÁP")).collect(Collectors.toList());
+                List<Manufacturer> manufacturers =  manufacturerDao
+                        .getAllManufacturers()
+                        .stream()
+                        .filter(it-> it.getName()
+                        .toUpperCase()
+                        .equals(edtNSX.getText().toString()))
+                        .collect(Collectors.toList());
 
                 if (manufacturers.size() == 0){
                     list.clear();
