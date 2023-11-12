@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "683706644007",
+    "project_id": "managewine",
+    "storage_bucket": "managewine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683706644007:android:99fbfd1972681597344002",
+        "android_client_info": {
+          "package_name": "com.example.managewine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb04D1gToMe96M7StLBox446LzOPxFWlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
