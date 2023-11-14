@@ -87,7 +87,6 @@ public class ReportFragment extends Fragment {
             public void onClick(View view) {
                 if (edtNSX.getText().toString().isEmpty()){
                     list = wineDao.getAllWines();
-                    list.clear();
                 }else {
                     list = wineDao.getAllWines()
                             .stream()
