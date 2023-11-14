@@ -17,6 +17,7 @@
 
     <EditText
         android:id="@+id/edt_nsx"
+        android:inputType="numberDecimal"
         android:layout_width="0dp"
         android:hint="Nhà sản xuất"
         android:layout_height="wrap_content"

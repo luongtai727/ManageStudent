@@ -47,6 +47,7 @@ public class ReportFragment extends Fragment {
 
     Spinner spinner;
 
+    Manufacturer manufacturer;
     public ReportFragment() {
         // Required empty public constructor
     }
@@ -70,9 +71,8 @@ public class ReportFragment extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                Manufacturer manufacturer = (Manufacturer) parentView.getItemAtPosition(position);
-                list = wineDao.getAllWines().stream().filter(it -> it.getProductionCountry() == manufacturer.getId()).collect(Collectors.toList());
-                wineAdapter.setData(list);
+                manufacturer = (Manufacturer) parentView.getItemAtPosition(position);
+
             }
 
             @Override
@@ -85,20 +85,16 @@ public class ReportFragment extends Fragment {
         btnSortByAlco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<Manufacturer> manufacturers =  manufacturerDao
-                        .getAllManufacturers()
-                        .stream()
-                        .filter(it-> it.getName()
-                        .toUpperCase()
-                        .equals(edtNSX.getText().toString()))
-                        .collect(Collectors.toList());
-
-                if (manufacturers.size() == 0){
+                if (edtNSX.getText().toString().isEmpty()){
+                    list = wineDao.getAllWines();
                     list.clear();
                 }else {
-                    list = wineDao.getAllWines().stream().filter(it -> it.getAlcoholContent() >= 5 && manufacturers.get(0).getId() == it.getProductionCountry()).collect(Collectors.toList());
+                    list = wineDao.getAllWines()
+                            .stream()
+                            .filter(it -> it.getProductionCountry() == manufacturer.getId()
+                                    && it.getAlcoholContent() >= Double.parseDouble(edtNSX.getText().toString()))
+                            .collect(Collectors.toList());
                 }
-
                 wineAdapter.setData(list);
             }
         });
